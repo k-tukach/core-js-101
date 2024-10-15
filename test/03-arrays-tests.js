@@ -1,8 +1,7 @@
 const assert = require('assert');
 const tasks = require('../src/03-arrays-tasks');
 it.optional = require('../extensions/it-optional');
-/* eslint-env mocha */
-/* eslint-disable no-undef */
+
 describe('03-arrays-tasks', () => {
   it.optional('findElement should return the index of specified value if exists', () => {
     [
@@ -229,10 +228,10 @@ describe('03-arrays-tasks', () => {
         expected: ['x', 1, 'b', 'c'],
       },
     ].forEach((data) => {
-      // tasks.insertItem(data.arr, data.item, data.index);
+      tasks.insertItem(data.arr, data.item, data.index);
       assert.deepEqual(
+        data.arr,
         data.expected,
-        tasks.insertItem(data.arr, data.item, data.index),
       );
     });
   });
@@ -747,7 +746,7 @@ describe('03-arrays-tasks', () => {
       }, {
         arr: [
           { artist: 'ACDC', album: 'Highway to Hell' },
-          { artist: 'Metallica', album: 'Kill\'em All' },
+          { artist: 'Metallica', album: "Kill'em All" },
           { artist: 'Deep Purple', album: 'Machine Head' },
           { artist: 'Metallica', album: 'And Justice for All' },
           { artist: 'ACDC', album: 'Back in Black' },
@@ -757,7 +756,7 @@ describe('03-arrays-tasks', () => {
         valueSelector: (item) => item.album,
         expected: new Map([
           ['ACDC', ['Highway to Hell', 'Back in Black']],
-          ['Metallica', ['Kill\'em All', 'And Justice for All']],
+          ['Metallica', ["Kill'em All", 'And Justice for All']],
           ['Deep Purple', ['Machine Head']],
           ['Manowar', ['Kings of Metal']],
         ]),

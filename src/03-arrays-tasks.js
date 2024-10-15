@@ -69,7 +69,7 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-  return arr.filter(num => num > 0);
+  return arr.filter((num) => num > 0);
 }
 
 /**
@@ -84,7 +84,7 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccoon' ] => [ 'cat', 'dog', 'raccoon' ]
  */
 function getArrayOfStrings(arr) {
-  return arr.filter(item => typeof item === 'string');
+  return arr.filter((item) => typeof item === 'string');
 }
 
 /**
@@ -116,7 +116,7 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-  return arr.map(str => str.toUpperCase());
+  return arr.map((str) => str.toUpperCase());
 }
 
 
@@ -131,7 +131,7 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  return arr.map(str => str.length);
+  return arr.map((str) => str.length);
 }
 
 /**
@@ -201,7 +201,7 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  return arr.map(row => row.join(',')).join('\n');
+  return arr.map((row) => row.join(',')).join('\n');
 }
 
 /**
@@ -216,7 +216,7 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-  return arr.map(num => num * num);
+  return arr.map((num) => num * num);
 }
 
 
@@ -308,9 +308,7 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  return arr.reduce((count, num) => {
-    return (num > 0 && Number.isInteger(num)) ? count + 1 : count;
-  }, 0);
+  return arr.reduce((count, num) => ((num > 0 && Number.isInteger(num)) ? count + 1 : count), 0);
 }
 
 /**
@@ -328,7 +326,7 @@ function getPositivesCount(arr) {
  */
 function sortDigitNamesByNumericOrder(arr) {
   const digitMap = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-    return arr.sort((a, b) => digitMap.indexOf(a) - digitMap.indexOf(b));
+  return arr.sort((a, b) => digitMap.indexOf(a) - digitMap.indexOf(b));
 }
 
 /**
@@ -360,7 +358,7 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-  return arr.filter(item => !item).length;
+  return arr.filter((item) => !item).length;
 }
 
 /**
@@ -377,9 +375,9 @@ function getFalsyValuesCount(arr) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-  function findAllOccurrences(arr, item) {
-    return arr.filter(x => x === item).length;
-  }
+function findAllOccurrences(arr, item) {
+  return arr.filter((x) => x === item).length;
+}
 
 /**
  * Concatenates all elements from specified array into single string with ',' delimiter
@@ -392,9 +390,9 @@ function getFalsyValuesCount(arr) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-  function toStringList(arr) {
-    return arr.join(',');
-  }
+function toStringList(arr) {
+  return arr.join(',');
+}
 
 
 /**
@@ -587,9 +585,8 @@ function swapHeadAndTail(arr) {
 
   if (len % 2 === 0) {
     return tail.concat(head);
-  } else {
-    return tail.concat(arr[mid], head);
   }
+  return tail.concat(arr[mid], head);
 }
 
 

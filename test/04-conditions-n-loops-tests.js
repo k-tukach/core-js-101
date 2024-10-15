@@ -1,8 +1,7 @@
 const assert = require('assert');
 const tasks = require('../src/04-conditions-n-loops-tasks');
 it.optional = require('../extensions/it-optional');
-/* eslint-env mocha */
-/* eslint-disable no-undef */
+
 describe('04-conditions-n-loops-tasks', () => {
   it.optional('getFizzBuzz should return the output value according specification', () => {
     [

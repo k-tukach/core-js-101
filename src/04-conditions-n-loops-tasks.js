@@ -174,7 +174,7 @@ function isInsideCircle(circle, point) {
 function findFirstSingleChar(str) {
   for (let i = 0; i < str.length; i++) {
     if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
-        return str[i];
+      return str[i];
     }
   }
   return null;
@@ -265,14 +265,14 @@ function reverseInteger(num) {
  */
 function isCreditCardNumber(ccn) {
   return ccn.toString().split('')
-  .reverse()
-  .map((digit, idx) => {
-    let num = parseInt(digit, 10);
-    if (idx % 2 === 1) num *= 2;
-    if (num > 9) num -= 9;
-    return num;
-  })
-  .reduce((sum, num) => sum + num) % 10 === 0;
+    .reverse()
+    .map((digit, idx) => {
+      let num = parseInt(digit, 10);
+      if (idx % 2 === 1) num *= 2;
+      if (num > 9) num -= 9;
+      return num;
+    })
+    .reduce((sum, num) => sum + num) % 10 === 0;
 }
 
 /**
@@ -320,8 +320,10 @@ function getDigitalRoot(num) {
  */
 function isBracketsBalanced(str) {
   const stack = [];
-  const brackets = { '(': ')', '{': '}', '[': ']', '<': '>' };
-  for (let char of str) {
+  const brackets = {
+    '(': ')', '{': '}', '[': ']', '<': '>',
+  };
+  for (const char of str) {
     if (brackets[char]) {
       stack.push(char);
     } else if (Object.values(brackets).includes(char)) {
@@ -370,16 +372,16 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-  const splitPathes = pathes.map(path => path.split('/'));
+  const splitPathes = pathes.map((path) => path.split('/'));
   const commonPath = [];
   for (let i = 0; i < splitPathes[0].length; i++) {
-    if (splitPathes.every(parts => parts[i] === splitPathes[0][i])) {
+    if (splitPathes.every((parts) => parts[i] === splitPathes[0][i])) {
       commonPath.push(splitPathes[0][i]);
     } else {
       break;
     }
   }
-  return commonPath.length > 0 ? commonPath.join('/') + '/' : '';
+  return commonPath.length > 0 ? `${commonPath.join('/')}/` : '';
 }
 
 
@@ -402,10 +404,8 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-  let result = Array(m1.length).fill(0).map(() => Array(m2[0].length).fill(0));
-  return result.map((row, i) => row.map((_, j) => 
-    m1[i].reduce((sum, elm, k) => sum + (elm * m2[k][j]), 0)
-  ));
+  const result = Array(m1.length).fill(0).map(() => Array(m2[0].length).fill(0));
+  return result.map((row, i) => row.map((_, j) => m1[i].reduce((sum, elm, k) => sum + (elm * m2[k][j]), 0)));
 }
 
 
@@ -441,15 +441,15 @@ function getMatrixProduct(m1, m2) {
  */
 function evaluateTicTacToePosition(position) {
   const lines = [
-    ...position, 
-    [position[0][0], position[1][0], position[2][0]], 
-    [position[0][1], position[1][1], position[2][1]], 
-    [position[0][2], position[1][2], position[2][2]], 
-    [position[0][0], position[1][1], position[2][2]], 
-    [position[0][2], position[1][1], position[2][0]]
+    ...position,
+    [position[0][0], position[1][0], position[2][0]],
+    [position[0][1], position[1][1], position[2][1]],
+    [position[0][2], position[1][2], position[2][2]],
+    [position[0][0], position[1][1], position[2][2]],
+    [position[0][2], position[1][1], position[2][0]],
   ];
 
-  for (let line of lines) {
+  for (const line of lines) {
     if (line[0] && line[0] === line[1] && line[1] === line[2]) {
       return line[0];
     }
