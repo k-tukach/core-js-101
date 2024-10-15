@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 function testOptional(title, fn, isAsyncTest) {
   if (isAsyncTest) {
     it(title, function test(done) {
