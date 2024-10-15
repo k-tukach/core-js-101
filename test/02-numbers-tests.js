@@ -2,6 +2,7 @@ const assert = require('assert');
 const tasks = require('../src/02-numbers-tasks');
 it.optional = require('../extensions/it-optional');
 /* eslint-env mocha */
+/* eslint-disable no-undef */
 describe('02-numbers-tasks', () => {
   it.optional('getRectangleArea should return a square of rectangle', () => {
     assert.equal(tasks.getRectangleArea(5, 10), 50);

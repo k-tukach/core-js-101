@@ -2,6 +2,7 @@ const assert = require('assert');
 const tasks = require('../src/03-arrays-tasks');
 it.optional = require('../extensions/it-optional');
 /* eslint-env mocha */
+/* eslint-disable no-undef */
 describe('03-arrays-tasks', () => {
   it.optional('findElement should return the index of specified value if exists', () => {
     [

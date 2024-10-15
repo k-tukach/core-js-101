@@ -2,6 +2,7 @@ const assert = require('assert');
 const tasks = require('../src/01-strings-tasks');
 it.optional = require('../extensions/it-optional');
 /* eslint-env mocha */
+/* eslint-disable no-undef */
 describe('01-strings-tasks', () => {
   it.optional('concatenateStrings should return concatenation of two strings', () => {
     assert.equal(tasks.concatenateStrings('aa', 'bb'), 'aabb');

@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* eslint-disable no-undef */
 function testOptional(title, fn, isAsyncTest) {
   if (isAsyncTest) {
     it(title, function test(done) {
