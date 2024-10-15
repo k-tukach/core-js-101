@@ -65,7 +65,7 @@ function getFactorial(n) {
  */
 function getSumBetweenNumbers(n1, n2) {
   let sum = 0;
-  for (let i = n1; i <= n2; i++) {
+  for (let i = n1; i <= n2; i += 1) {
     sum += i;
   }
   return sum;
@@ -125,7 +125,10 @@ function isTriangle(a, b, c) {
  *
  */
 function doRectanglesOverlap(rect1, rect2) {
-  return !(rect1.left + rect1.width <= rect2.left || rect2.left + rect2.width <= rect1.left || rect1.top + rect1.height <= rect2.top || rect2.top + rect2.height <= rect1.top);
+  return !(rect1.left + rect1.width <= rect2.left
+    || rect2.left + rect2.width <= rect1.left
+    || rect1.top + rect1.height <= rect2.top
+    || rect2.top + rect2.height <= rect1.top);
 }
 
 
@@ -172,7 +175,7 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
       return str[i];
     }
@@ -290,10 +293,11 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-  while (num > 9) {
-    num = num.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
+  let newNum = num;
+  while (newNum > 9) {
+    newNum = newNum.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
   }
-  return num;
+  return newNum;
 }
 
 
@@ -323,14 +327,17 @@ function isBracketsBalanced(str) {
   const brackets = {
     '(': ')', '{': '}', '[': ']', '<': '>',
   };
-  for (const char of str) {
+  const isBalanced = str.split('').every((char) => {
     if (brackets[char]) {
       stack.push(char);
     } else if (Object.values(brackets).includes(char)) {
-      if (brackets[stack.pop()] !== char) return false;
+      if (brackets[stack.pop()] !== char) {
+        return false;
+      }
     }
-  }
-  return stack.length === 0;
+    return true;
+  });
+  return isBalanced && stack.length === 0;
 }
 
 
@@ -374,7 +381,7 @@ function toNaryString(num, n) {
 function getCommonDirectoryPath(pathes) {
   const splitPathes = pathes.map((path) => path.split('/'));
   const commonPath = [];
-  for (let i = 0; i < splitPathes[0].length; i++) {
+  for (let i = 0; i < splitPathes[0].length; i += 1) {
     if (splitPathes.every((parts) => parts[i] === splitPathes[0][i])) {
       commonPath.push(splitPathes[0][i]);
     } else {
@@ -404,8 +411,13 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-  const result = Array(m1.length).fill(0).map(() => Array(m2[0].length).fill(0));
-  return result.map((row, i) => row.map((_, j) => m1[i].reduce((sum, elm, k) => sum + (elm * m2[k][j]), 0)));
+  const result = Array(m1.length)
+    .fill(0)
+    .map(() => Array(m2[0].length).fill(0));
+  return result.map((row, i) => row.map((_, j) => m1[i].reduce(
+    (sum, elm, k) => sum + (elm * m2[k][j]),
+    0,
+  )));
 }
 
 
@@ -448,13 +460,13 @@ function evaluateTicTacToePosition(position) {
     [position[0][0], position[1][1], position[2][2]],
     [position[0][2], position[1][1], position[2][0]],
   ];
-
-  for (const line of lines) {
+  return lines.reduce((winner, line) => {
+    if (winner) return winner;
     if (line[0] && line[0] === line[1] && line[1] === line[2]) {
       return line[0];
     }
-  }
-  return undefined;
+    return undefined;
+  }, undefined);
 }
 
 
