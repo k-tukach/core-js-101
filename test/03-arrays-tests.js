@@ -746,7 +746,7 @@ describe('03-arrays-tasks', () => {
       }, {
         arr: [
           { artist: 'ACDC', album: 'Highway to Hell' },
-          { artist: 'Metallica', album: "Kill'em All" },
+          { artist: 'Metallica', album: 'Kill\'em All' },
           { artist: 'Deep Purple', album: 'Machine Head' },
           { artist: 'Metallica', album: 'And Justice for All' },
           { artist: 'ACDC', album: 'Back in Black' },
@@ -756,7 +756,7 @@ describe('03-arrays-tasks', () => {
         valueSelector: (item) => item.album,
         expected: new Map([
           ['ACDC', ['Highway to Hell', 'Back in Black']],
-          ['Metallica', ["Kill'em All", 'And Justice for All']],
+          ['Metallica', ['Kill\'em All', 'And Justice for All']],
           ['Deep Purple', ['Machine Head']],
           ['Manowar', ['Kings of Metal']],
         ]),

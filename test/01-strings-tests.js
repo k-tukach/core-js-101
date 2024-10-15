@@ -10,8 +10,8 @@ describe('01-strings-tasks', () => {
   });
 
   it.optional('getStringLength should return the length of string', () => {
-    assert.equal(tasks.getStringLength('aaaaa'), 5, "'aaaaa' length should be 5");
-    assert.equal(tasks.getStringLength(''), 0, "'' length should be 0");
+    assert.equal(tasks.getStringLength('aaaaa'), 5, '\'aaaaa\' length should be 5');
+    assert.equal(tasks.getStringLength(''), 0, '\'\' length should be 0');
   });
 
   it.optional('getStringFromTemplate should create a string from template using given parameters', () => {
@@ -108,7 +108,7 @@ describe('01-strings-tasks', () => {
     assert.equal(tasks.isString([]), false, '[]');
     assert.equal(tasks.isString('test'), true, 'test');
     // eslint-disable-next-line no-new-wrappers
-    assert.equal(tasks.isString(new String('test')), true, "new String('test')");
+    assert.equal(tasks.isString(new String('test')), true, 'new String(\'test\')');
   });
 
   it.optional('getCardId should return the index of card in the initial deck', () => {
